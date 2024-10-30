@@ -12,6 +12,11 @@ import { Message } from 'src/entities/message.entity';
 export const dbConfig = async (configService: ConfigService): Promise<PostgresConnectionOptions> => ({
   type: "postgres",
   url: configService.get<string>("DATABASE_URL"),
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
   port: configService.get<number>("DATABASE_PORT"),
   entities: [User, Comment, Article, Work, Service, Vision, Technology, Message],
   synchronize: configService.get<boolean>('SYNCHRONIZE'),
