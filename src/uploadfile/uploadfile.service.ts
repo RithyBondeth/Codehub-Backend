@@ -3,9 +3,13 @@ import { diskStorage } from 'multer';
 import { extname } from 'path';
 import * as path from 'path';
 import * as fs from 'fs';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class UploadfileService {
+
+  constructor(private readonly configService: ConfigService) {}
+
   //Method for handle file upload destination and naming
   static storageOptions = diskStorage({
     destination: './uploads',
@@ -19,7 +23,7 @@ export class UploadfileService {
   
   //Method for generate a URL for accessing the upload file
   getUploadFileUrl(file: Express.Multer.File): string {
-    return `http://localhost:3000/uploads/${file.filename}`;
+    return this.configService.get<string>("BASE_URL") + file.filename;
   }
 
   //Method for deleting file
