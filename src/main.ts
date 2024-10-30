@@ -17,7 +17,7 @@ async function bootstrap() {
   );
   app.enableCors({
     allowedHeaders: ['Content-Type'],
-    origin: 'http://localhost:5173', // Allow requests from this origin
+    origin: 'https://codehub-sxx7.onrender.com', // Allow requests from this origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // If you need to allow cookies
   })
