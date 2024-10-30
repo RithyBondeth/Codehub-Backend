@@ -23,7 +23,7 @@ export class UploadfileService {
   
   //Method for generate a URL for accessing the upload file
   getUploadFileUrl(file: Express.Multer.File): string {
-    return this.configService.get<string>("BASE_URL") + file.filename;
+    return this.configService.get<string>("BASE_URL") + "/uploads/" + file.filename;
   }
 
   //Method for deleting file

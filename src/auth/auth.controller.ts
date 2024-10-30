@@ -16,10 +16,14 @@ import { UserRoles } from 'src/entities/user.entity';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { Roles } from 'src/decorators/roles.decorator';
 import { Response } from 'express';
+import { ConfigService } from '@nestjs/config';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService, 
+    private readonly configService: ConfigService,
+  ) {}
 
   @Post('signup')
   @UseInterceptors(FileInterceptor('avatar', { storage: UploadfileService.storageOptions }))
@@ -61,7 +65,7 @@ export class AuthController {
   @Get('google/callback')
   googleAuthRedirect(@Req() req: any, @Res() res: Response) {
     const user = req.user
-    res.redirect(`http://localhost:5173/?token=${user.token}`)
+    res.redirect(`${process.env.FRONTEND_URL}/?token=${user.token}`)
   }
 
 
@@ -73,7 +77,7 @@ export class AuthController {
   @UseGuards(FacebookAuthGaurd)
   async facebookCallback(@Req() req: any, @Res() res: Response) {
     const user = req.user
-    res.redirect(`http://localhost:5173/?token=${user.token}`)
+    res.redirect(`${process.env.FRONTEND_URL}/?token=${user.token}`)
   }
 
   @Get('github/login')
@@ -84,7 +88,7 @@ export class AuthController {
   @UseGuards(GithubAuthGuard) 
   async githubCallback(@Req() req: any, @Res() res: Response) {
     const user = req.user
-    res.redirect(`http://localhost:5173/?token=${user.token}`)
+    res.redirect(`${process.env.FRONTEND_URL}/?token=${user.token}`)
   }
 
   @UseInterceptors(UserInterceptor)
