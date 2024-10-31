@@ -17,9 +17,8 @@ async function bootstrap() {
   );
   app.enableCors({
     allowedHeaders: ['Content-Type'],
-    //origin: `${process.env.ORIGIN_URL}` || "https://codehub-backend-hb3t.onrender.com", // Allow requests from this origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // If you need to allow cookies
+    credentials: true, // If need to allow cookies
   })
   app.setGlobalPrefix('api');
 

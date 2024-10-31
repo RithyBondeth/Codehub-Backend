@@ -130,14 +130,14 @@ export class AuthService {
         },
       });
 
-      const resetURL = this.configService.get<string>("BASE_URL") + `api/auth/reset-password/${resetToken}`;
+      //const resetURL = this.configService.get<string>("BASE_URL") + `api/auth/reset-password/${resetToken}`;
       const user = await this.userRepo.findOne({ where: { email: email } });
 
       const mailOptions = {
         from: this.configService.get<string>('EMAIL_USER'),
         to: email,
         subject: 'Password Reset Token',
-        text: `Hello, ${user.username}. I'm from Codehub you can reset your password via this URL: ${resetURL}`,
+        text: `Hello, ${user.username}. I'm from Codehub you please copy the reset token code here to reset your password: ${resetToken}`,
       };
 
       await transport.sendMail(mailOptions);
