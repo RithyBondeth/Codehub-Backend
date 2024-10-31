@@ -63,9 +63,10 @@ export class AuthController {
 
   @UseGuards(GoogleAuthGuard)
   @Get('google/callback')
-  googleAuthRedirect(@Req() req: any, @Res() res: Response) {
+  googleAuthRedirect(@Req() req: any) {
     const user = req.user
-    res.redirect(`${process.env.FRONTEND_URL}signin/?token=${user.token}`)
+    return { accessToken: user.token }
+    //res.redirect(`${process.env.FRONTEND_URL}signin/?token=${user.token}`)
   }
 
 
