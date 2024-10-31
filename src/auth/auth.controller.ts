@@ -65,7 +65,7 @@ export class AuthController {
   @Get('google/callback')
   googleAuthRedirect(@Req() req: any, @Res() res: Response) {
     const user = req.user
-    res.redirect(`${process.env.FRONTEND_URL}/signin/?token=${user.token}`)
+    res.redirect(`${process.env.FRONTEND_URL}signin/?token=${user.token}`)
   }
 
 
@@ -77,7 +77,7 @@ export class AuthController {
   @UseGuards(FacebookAuthGaurd)
   async facebookCallback(@Req() req: any, @Res() res: Response) {
     const user = req.user
-    res.redirect(`${process.env.FRONTEND_URL}/signin/?token=${user.token}`)
+    res.redirect(`${process.env.FRONTEND_URL}signin/?token=${user.token}`)
   }
 
   @Get('github/login')
@@ -88,7 +88,7 @@ export class AuthController {
   @UseGuards(GithubAuthGuard) 
   async githubCallback(@Req() req: any, @Res() res: Response) {
     const user = req.user
-    res.redirect(`${process.env.FRONTEND_URL}/?token=${user.token}`)
+    res.redirect(`${process.env.FRONTEND_URL}signin/?token=${user.token}`)
   }
 
   @UseInterceptors(UserInterceptor)
