@@ -14,9 +14,9 @@ import { AuthGuard } from 'src/guards/auth.guard';
 export class CommentController {
   constructor(private readonly commentService: CommentService) {}
 
-  @Get('all')
-  async findAllCommnet(): Promise<GetCommentDto[]> {
-    return this.commentService.findAllComment()
+  @Get('all/article/:id')
+  async findAllCommnet(@Param('id', ParseIntPipe) articleId: number): Promise<GetCommentDto[]> {
+    return this.commentService.findAllComment(articleId)
   }
   
   @Get('count')

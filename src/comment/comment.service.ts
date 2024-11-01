@@ -15,8 +15,11 @@ export class CommentService {
         @InjectRepository(Article) private articleRepo: Repository<Article>
     ) {}
     
-    async findAllComment(): Promise<GetCommentDto[]> {
-        const comments = await this.commentRepo.find({ relations: ["user", "article"] })
+    async findAllComment(articleId: number): Promise<GetCommentDto[]> {
+        const comments = await this.commentRepo.find({ 
+            relations: ["user", "article"],
+            where: { article: { id: articleId } }
+        })
         if(!comments) throw new NotFoundException("There's no comment in database")
         
         return comments.map((comment) => new GetCommentDto(comment))
