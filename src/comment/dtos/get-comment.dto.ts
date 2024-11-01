@@ -109,7 +109,8 @@ export class GetCommentDto {
     @Exclude()
     updatedAt: Date
 
-    @Exclude()
+    @IsString()
+    @IsNotEmpty()
     createdAt: Date
 
     constructor(partial: Partial<GetCommentDto>) {
