@@ -9,9 +9,6 @@ import { ResetPasswordDto } from './dtos/auth-resetpassword.dto';
 import { GoogleAuthGuard } from './guards/google-auth/google-auth.guard';
 import { FacebookAuthGaurd } from './guards/facebook-auth/facebook-auth.guard';
 import { GithubAuthGuard } from './guards/github-auth/githu-auth.guard';
-import { User } from 'src/user/decorators/user.decorator';
-import { UserType } from 'src/user/types/user.type';
-import { UserInterceptor } from 'src/user/interceptors/user.interceptor';
 import { UserRoles } from 'src/entities/user.entity';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { Roles } from 'src/decorators/roles.decorator';
@@ -89,11 +86,5 @@ export class AuthController {
   async githubCallback(@Req() req: any, @Res() res: Response) {
     const user = req.user
     res.redirect(`${process.env.FRONTEND_URL}?token=${user.token}`)
-  }
-
-  @UseInterceptors(UserInterceptor)
-  @Get('me')
-  async getMe(@User() user: UserType): Promise<UserType> {
-    return user;
   }
 }
