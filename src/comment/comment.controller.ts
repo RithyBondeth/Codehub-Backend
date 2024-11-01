@@ -15,18 +15,21 @@ export class CommentController {
   constructor(private readonly commentService: CommentService) {}
 
   @Get('all/article/:id')
-  async findAllCommnet(@Param('id', ParseIntPipe) articleId: number): Promise<GetCommentDto[]> {
-    return this.commentService.findAllComment(articleId)
+  async findAllCommentByArticle(@Param('id', ParseIntPipe) articleId: number): Promise<GetCommentDto[]> {
+    return this.commentService.findAllCommentByArticle(articleId)
   }
   
-  @Get('count')
-  async countCommnet(): Promise<{count: number}> {
-    return this.commentService.countComment()
+  @Get('count/article/:id')
+  async countCommentByArticle(@Param('id', ParseIntPipe) articleId: number): Promise<{count: number}> {
+    return this.commentService.countCommentByArticle(articleId)
   }
 
-  @Get('id/:id')
-  async findOneComment(@Param('id', ParseIntPipe) commentId: number): Promise<GetCommentDto> {
-    return this.commentService.findOneComment(commentId)
+  @Get('id/:commentId/article/:articleId')
+  async findOneCommentByArticle(
+    @Param('commentId', ParseIntPipe) commentId: number,
+    @Param('articleId', ParseIntPipe) articleId: number
+): Promise<GetCommentDto> {
+    return this.commentService.findOneCommentByArticle(commentId, articleId)
   }
 
   @UseInterceptors(UserInterceptor)

@@ -15,7 +15,7 @@ export class CommentService {
         @InjectRepository(Article) private articleRepo: Repository<Article>
     ) {}
     
-    async findAllComment(articleId: number): Promise<GetCommentDto[]> {
+    async findAllCommentByArticle(articleId: number): Promise<GetCommentDto[]> {
         const comments = await this.commentRepo.find({ 
             relations: ["user", "article"],
             where: { article: { id: articleId } }
@@ -25,18 +25,20 @@ export class CommentService {
         return comments.map((comment) => new GetCommentDto(comment))
     }   
 
-    async findOneComment(commentId: number): Promise<GetCommentDto> {
+    async findOneCommentByArticle(commentId: number, articleId: number): Promise<GetCommentDto> {
         const comment = await this.commentRepo.findOne({ 
             relations: ["user", "article"], 
-            where: { id: commentId} 
+            where: { id: commentId, article: { id: articleId } } 
         })
         if(!comment) throw new NotFoundException(`There's no comment with id ${commentId}`)
 
         return new GetCommentDto(comment)
     }
 
-    async countComment(): Promise<{count: number}> {
-        const count = await this.commentRepo.count()
+    async countCommentByArticle(articleId: number): Promise<{count: number}> {
+        const count = await this.commentRepo.count({ 
+            where: { article: { id: articleId } } 
+        })
         return { count: count }
     }
 
