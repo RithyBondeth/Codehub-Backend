@@ -29,8 +29,6 @@ export class CommentController {
     return this.commentService.findOneComment(commentId)
   }
 
-  @Roles(UserRoles.ADMIN)
-  @UseGuards(AuthGuard)
   @UseInterceptors(UserInterceptor)
   @Post()
   async createComment(@Body() body: CreateCommentDto, @User() user: UserType) {
