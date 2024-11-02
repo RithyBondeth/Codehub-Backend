@@ -15,6 +15,7 @@ import { VisionModule } from './vision/vision.module';
 import { ServiceModule } from './service/service.module';
 import { TechnologyModule } from './technology/technology.module';
 import { MessageModule } from './message/message.module';
+import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { MessageModule } from './message/message.module';
     ServiceModule,
     TechnologyModule,
     MessageModule,
+    CourseModule,
   ],
   controllers: [],
   providers: [

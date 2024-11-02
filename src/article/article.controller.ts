@@ -54,8 +54,8 @@ export class ArticleController {
     @UploadedFiles() files: Array<Express.Multer.File>,
     @Param('id', ParseIntPipe) articleId: number
   ): Promise<GetArticleDto> {
-    const thumbnail = files.find((file) => file.fieldname === 'thumbnail')
-    const poster = files.find((file) => file.fieldname === 'poster')
+    const thumbnail = files ? files.find((file) => file.fieldname === 'thumbnail') : null
+    const poster = files ? files.find((file) => file.fieldname === 'poster') : null
 
     return this.articleService.updateArticle(body, thumbnail, poster, articleId)
   }

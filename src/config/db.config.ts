@@ -8,6 +8,7 @@ import { Service } from 'src/entities/service.entity';
 import { Vision } from 'src/entities/vision.entity';
 import { Technology } from 'src/entities/technology.entity';
 import { Message } from 'src/entities/message.entity';
+import { Course } from 'src/entities/course.entity';
 
 export const dbConfig = async (configService: ConfigService): Promise<PostgresConnectionOptions> => ({
   type: "postgres",
@@ -18,6 +19,6 @@ export const dbConfig = async (configService: ConfigService): Promise<PostgresCo
     },
   },
   port: configService.get<number>("DATABASE_PORT"),
-  entities: [User, Comment, Article, Work, Service, Vision, Technology, Message],
+  entities: [User, Comment, Article, Work, Service, Vision, Technology, Message, Course],
   synchronize: configService.get<boolean>('SYNCHRONIZE'),
 });
