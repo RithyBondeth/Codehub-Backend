@@ -15,6 +15,10 @@ export class UpdateWorkDto {
 
     @IsString()
     @IsOptional()
+    khmerDescription?: string
+
+    @IsString()
+    @IsOptional()
     author?: string
 
     @IsString()

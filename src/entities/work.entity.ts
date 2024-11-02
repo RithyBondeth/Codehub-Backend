@@ -14,6 +14,9 @@ export class Work {
     @Column()
     description: string
 
+    @Column({ nullable: true })
+    khmerDescription: string
+
     @Column()
     author: string
 

@@ -12,6 +12,10 @@ export class CreateWorkDto {
     @IsString()
     @IsNotEmpty()
     description: string
+
+    @IsString()
+    @IsNotEmpty()
+    khmerDescription: string
     
     @IsString()
     @IsNotEmpty()

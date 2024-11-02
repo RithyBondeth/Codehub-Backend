@@ -73,6 +73,7 @@ export class WorkService {
             title: body.title,
             khmerTitle: body.khmerTitle,
             description: body.description,
+            khmerDescription: body.khmerDescription,
             author: body.author,
             content: body.content,
             poster: poster ? this.uploadFileService.getUploadFileUrl(poster) : work.poster,
