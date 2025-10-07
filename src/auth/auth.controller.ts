@@ -7,8 +7,8 @@ import { SignInDto } from './dtos/auth-signin.dto';
 import { ForgotPasswordDto } from './dtos/auth-forgotpassword.dto';
 import { ResetPasswordDto } from './dtos/auth-resetpassword.dto';
 import { GoogleAuthGuard } from './guards/google-auth/google-auth.guard';
-import { FacebookAuthGaurd } from './guards/facebook-auth/facebook-auth.guard';
-import { GithubAuthGuard } from './guards/github-auth/githu-auth.guard';
+import { FacebookAuthGuard } from './guards/facebook-auth/facebook-auth.guard';
+import { GithubAuthGuard } from './guards/github-auth/github-auth.guard';
 import { UserRoles } from 'src/entities/user.entity';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { Roles } from 'src/decorators/roles.decorator';
@@ -67,11 +67,11 @@ export class AuthController {
 
 
   @Get('facebook/login')
-  @UseGuards(FacebookAuthGaurd)
+  @UseGuards(FacebookAuthGuard)
   async facebookAuth(){}
 
   @Get('facebook/callback')
-  @UseGuards(FacebookAuthGaurd)
+  @UseGuards(FacebookAuthGuard)
   async facebookCallback(@Req() req: any, @Res() res: Response) {
     const user = req.user
     res.redirect(`${process.env.FRONTEND_URL}?token=${user.token}`)

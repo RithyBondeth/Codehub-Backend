@@ -1,5 +1,9 @@
 {
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
-    "editor.detectIndentation": true
+    "editor.detectIndentation": true,
+    "cSpell.words": [
+        "dtos",
+        "forgotpassword"
+    ]
 }

@@ -35,7 +35,7 @@ export class VisionController {
   @UseGuards(AuthGuard)
   @Put('id/:id')
   @UseInterceptors(FileInterceptor('image', { storage: UploadfileService.storageOptions }))
-  async updateVivsion(
+  async updateVision(
     @Param('id', ParseIntPipe) visionId: number,
     @Body() body: UpdateVisionDto,
     @UploadedFile() image: Express.Multer.File
