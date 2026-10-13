@@ -1,83 +1,95 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-# Codehub-Backend
-=======
->>>>>>> cfafe76 (Changes in main.ts)
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+<div align="center">
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Codehub — Backend
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+**The backend API for Codehub, a freelance portfolio platform with courses, articles, comments, and messaging.**
 
-## Description
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+![TypeORM](https://img.shields.io/badge/TypeORM-FE0803?style=for-the-badge&logo=typeorm&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+</div>
 
-## Installation
+---
 
-```bash
-$ npm install
-```
+## Overview
 
-## Running the app
+Codehub Backend powers Codehub, a freelance portfolio website. It manages the site's content (services, technologies, works, vision, courses, and articles) and its community features (users, comments, and messages), with local and social authentication.
 
-```bash
-# development
-$ npm run start
+## Features
 
-# watch mode
-$ npm run start:dev
+- **Authentication:** sign-up, sign-in, and forgot and reset password by email, plus social login with Google, GitHub, and Facebook.
+- **Portfolio content:** services, technologies, works (projects), and vision statements.
+- **Learning content:** courses and articles, with filtering.
+- **Community:** comments and contact messages.
+- **User management:** filtering, counts, and role-based guards.
+- **File uploads** served as static files.
 
-# production mode
-$ npm run start:prod
-```
+## Tech Stack
 
-## Test
+| Area | Technology |
+| --- | --- |
+| Framework | NestJS |
+| Language | TypeScript |
+| Database | PostgreSQL, TypeORM |
+| Authentication | Passport (JWT, Google, GitHub, Facebook), bcrypt |
+| Email | Nodemailer |
+| Uploads | Multer, `@nestjs/serve-static` |
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js and npm
+- A PostgreSQL database
+
+### Installation
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/RithyBondeth/Codehub-Backend.git
+cd Codehub-Backend
+npm install
+npm run start:dev
 ```
 
-## Support
+The API is served under `/api`.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Environment Variables
 
-## Stay in touch
+| Variable | Purpose |
+| --- | --- |
+| `DATABASE_URL`, `DATABASE_PORT`, `SYNCHRONIZE` | PostgreSQL connection |
+| `JWT_SECRET`, `JWT_EXPIRE_IN` | Token signing |
+| `EMAIL_USER`, `EMAIL_PASSWORD` | Password-reset email |
+| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_CALLBACK_URL` | Google login |
+| `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GITHUB_CALLBACK_URL` | GitHub login |
+| `FACEBOOK_CLIENT_ID`, `FACEBOOK_CLIENT_SECRET`, `FACEBOOK_CALLBACK_URL` | Facebook login |
+| `PORT` | Server port |
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Project Structure
 
-## License
+```text
+Codehub-Backend/
+└── src/
+    ├── auth/                  # Local and social auth, guards, strategies
+    ├── user/
+    ├── service/  technology/  work/  vision/
+    ├── course/  article/  comment/  message/
+    ├── uploadfile/            # File uploads
+    ├── entities/              # TypeORM entities
+    └── config/                # Database and JWT configuration
+```
 
-Nest is [MIT licensed](LICENSE).
-<<<<<<< HEAD
-=======
->>>>>>> a7f0e7e (Initial commit)
->>>>>>> cfafe76 (Changes in main.ts)
+## Related Repositories
+
+- [Codehub-Frontend](https://github.com/RithyBondeth/Codehub-Frontend): the React portfolio website
+
+## Author
+
+**Rithy Bondeth** — Full Stack Developer & AI Engineer
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-0A0A0A?style=for-the-badge&logo=vercel&logoColor=white)](https://bondeth.dev)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/RithyBondeth)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rithy-bondeth-484073282/)
